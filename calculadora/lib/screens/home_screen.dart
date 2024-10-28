@@ -99,13 +99,26 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // Actualiza el valor mostrado en pantalla
-  void actualizarDisplay(String value) {
-    setState(() { // Notifica a Flutter que el estado ha cambiado y que se debe volver a construir la UI
-      // Si el valor actual es "0", lo reemplaza; si no, concatena el nuevo valor
+  final List<String> operadoresValidos = ["%", "^", "/", "*", "-", "+"];
+
+void actualizarDisplay(String value) {
+  setState(() {
+    // Si el valor es un operador
+    if (operadoresValidos.contains(value)) {
+      // Si el último carácter del display es un operador
+      if (operadoresValidos.contains(displayText[displayText.length - 1])) {
+        // Reemplazo el último operador con el nuevo
+        displayText = displayText.substring(0, displayText.length - 1) + value;
+      } else {
+        // Solo añado el operador si no es el primer carácter
+        displayText = displayText == "0" ? value : displayText + value;
+      }
+    } else {
+      // Si no es un operador, lo añado normalmente
       displayText = displayText == "0" ? value : displayText + value;
-    });
-  }
+    }
+  });
+}
 
   // Aplica el operador de porcentaje
   void aplicarPorcentaje() {
