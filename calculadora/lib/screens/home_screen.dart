@@ -13,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Calculadora',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.white10,
@@ -207,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      const SizedBox(width: 8.0), // Espacio entre botones
+      const SizedBox(width: 8.0), 
       Expanded(
         child: ElevatedButton(
           onPressed: () {},
